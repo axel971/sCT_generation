@@ -1,0 +1,17 @@
+*.tiff
+*.png
+*.nii
+*.nii.gz
+*.npy
+*.hdf5
+*.h5
+*.pyc
+*~
+._*
+*.*~
+*.zip
+*.exe
+*.obj
+*.bin
+build/
+CMakeFiles/
