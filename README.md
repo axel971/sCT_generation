@@ -1,7 +1,7 @@
 
 
 # Instructions to Download the Image Dataset
-## Download the data
+## Download the dataset
 
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/data_downloading.py" <br />
 DATA_FILE_NAME = "task1.zip" <br />
