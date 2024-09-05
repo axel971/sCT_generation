@@ -1,10 +1,10 @@
 
 
-# Instructions to download the image data
+# Instructions to Download the Image Dataset
 
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/data_downloading.py"
 
-DATA_DIR = "HOME_DIR/data/raw_data" #Folder that will contain the downloaded data
+DATA_DIR = "HOME_DIR/data/raw_data"
 
 DATA_URL = "https://zenodo.org/records/7260705/files/Task1.zip?download=1"
 
