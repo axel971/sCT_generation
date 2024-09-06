@@ -18,3 +18,10 @@ UNZIPPED_DATA_DIR = "HOME_DIR/data/raw_data"
 
 python PYTHON_SCRIPT_PATH -file_path ZIPPED_DATA_PATH -output_dir UNZIPPED_DATA_DIR
 
+## Get patients list
+
+PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/get_patients_list.py" <br />
+DATA_DIR = "HOME_DIR/data/raw_data/Task1/pelvis" <br />
+PATIENTS_LIST_PATH = "HOME_DIR/data/patients_list.xlsx"
+
+python PYTHON_SCRIPT_PATH -data_dir DATA_DIR -patient_list_path PATIENT_LIST_PATH

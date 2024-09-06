@@ -3,23 +3,23 @@ from pathlib import Path
 import argparse
 import pandas as pd
 
-# dir = "C:\Users\axell\Documents\dev\sCT_generation\data\raw_data\Task1\pelvis"
-# output_list_path = "C:\Users\axell\Documents\dev\sCT_generation\data\patient_names.xlsx"
-# python get_patients_list.py -dir "C:\Users\axell\Documents\dev\sCT_generation\data\raw_data\Task1\pelvis" -output_list_path C:\Users\axell\Documents\dev\sCT_generation\data\patients_list.xlsx
+# data_dir = "C:\Users\axell\Documents\dev\sCT_generation\data\raw_data\Task1\pelvis"
+# patients_list_path = "C:\Users\axell\Documents\dev\sCT_generation\data\patients_list.xlsx"
+# python get_patients_list.py -data_dir "C:\Users\axell\Documents\dev\sCT_generation\data\raw_data\Task1\pelvis" -patients_list_path C:\Users\axell\Documents\dev\sCT_generation\data\patients_list.xlsx
 
-def main(directory: str, output_list_path: str):
+def main(data_dir: str, patients_list_path: str):
 
-    DIR = Path(directory)
-    OUTPUT_LIST_PATH = Path(output_list_path)
+    DATA_DIR = Path(data_dir)
+    PATIENTS_LIST_PATH = Path(patients_list_path)
     patients_list = []
 
-    for path in DIR.iterdir(): # Get subdirectories path
+    for path in DATA_DIR.iterdir(): # Get subdirectories path
         if path.name != "overview":
             patients_list.append(path.name)
             print (path.name)
 
     df = pd.DataFrame(patients_list, columns = ["patient_name"])
-    df.to_excel(OUTPUT_LIST_PATH)
+    df.to_excel(PATIENTS_LIST_PATH)
 
     return
 
@@ -27,10 +27,10 @@ def main(directory: str, output_list_path: str):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description = "Get a list of patient names")
-    parser.add_argument("-dir", metavar = "string", required = True, help = "Path of the directory containing subdirectories with patient names")
-    parser.add_argument("-output_list_path", metavar = "string", required = True, help = "Path of the obtained patient names' list")
+    parser.add_argument("-data_dir", metavar = "string", required = True, help = "Path toward the directory containing subdirectories named with patient IDs")
+    parser.add_argument("-patients_list_path", metavar = "string", required = True, help = "Path of the patient list file")
     args = parser.parse_args()
 
-    main(directory = args.dir, output_list_path = args.output_list_path)
+    main(data_dir = args.data_dir, patients_list_path = args.patients_list_path)
 
 
