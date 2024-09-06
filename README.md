@@ -13,8 +13,8 @@ python PYTHON_SCRIPT_PATH -url DATA_URL -data_file_name DATA_FILE_NAME -data_out
 ## Unzip the downloaded image dataset
 
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/unzip_file.zip" <br />
-FILE_PATH = "HOME_DIR/data/raw_dat/Task1.zip" <br />
-OUTPUT_DIR = "HOME_DIR/data/raw_data"
+ZIPPED_DATA_PATH = "HOME_DIR/data/raw_dat/Task1.zip" <br />
+UNZIPPED_DATA_DIR = "HOME_DIR/data/raw_data"
 
-python PYTHON_SCRIPT_PATH -file_path FILE_PATH -output_dir OUTPUT_DIR
+python PYTHON_SCRIPT_PATH -file_path ZIPPED_DATA_PATH -output_dir UNZIPPED_DATA_DIR
 
