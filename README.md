@@ -27,7 +27,7 @@ python PYTHON_SCRIPT_PATH -data_dir DATA_DIR/Task1/pelvis -patient_list_path PAT
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/reorganize_data_folders.py" <br />
 REORGANIZE_DATA_DIR = "HOME_DIR/data/raw_data/pelvis"
 
-python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR -reorganize_data_dir REORGANIZE_DATA_DIR -patients_list_path PATIENTS_LIST_PATH
+python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR/Task1/pelvis -reorganize_data_dir REORGANIZE_DATA_DIR -patients_list_path PATIENTS_LIST_PATH
 
 # Preprocessing of the data
 
