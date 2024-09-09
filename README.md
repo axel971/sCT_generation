@@ -32,3 +32,5 @@ REORGANIZE_DATA_DIR = "HOME_DIR/data/raw_data/pelvis"
 
 python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR -reorganize_data_dir REORGANIZE_DATA_DIR -patients_list_path PATIENTS_LIST_PATH
 
+# Preprocessing of the data
+
