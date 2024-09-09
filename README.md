@@ -31,12 +31,12 @@ python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR/Task1/pelvis -reorganize_d
 
 # Preprocessing of the data
 
-### Compile the CXX excecutables
-cd HOME_DIR\sources\preprocessing\lib\n4_bias_field_correction <br />
-cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="C:\itk\bin\CMakeFiles" <br />
+### Compile the CXX executables
+cd HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction <br />
+cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="PATH_TOWARD/itk/bin/CMakeFiles" <br />
 mingw32-make
 
-cd HOME_DIR/sources/preprocessing/lib/resampling <br />
-cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="C:\itk\bin\CMakeFiles" <br />
+cd HOME_DIR/sources/preprocessing/lib/resampling<br />
+cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="PATH_TOWARD/itk/bin/CMakeFiles"<br />
 mingw32-make
 
