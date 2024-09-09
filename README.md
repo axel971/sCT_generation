@@ -29,9 +29,9 @@ REORGANIZE_DATA_DIR = "HOME_DIR/data/raw_data/pelvis"
 
 python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR/Task1/pelvis -reorganize_data_dir REORGANIZE_DATA_DIR -patients_list_path PATIENTS_LIST_PATH
 
-# Preprocessing of the data
+# Instructions to preprocess the data
 
-### Compile the CXX executables
+### Compile the cxx executables
 cd HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction <br />
 cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="PATH_TOWARD/itk/bin/CMakeFiles" <br />
 mingw32-make
