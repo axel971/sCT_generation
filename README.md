@@ -25,3 +25,10 @@ DATA_DIR = "HOME_DIR/data/raw_data/Task1/pelvis" <br />
 PATIENTS_LIST_PATH = "HOME_DIR/data/patients_list.xlsx"
 
 python PYTHON_SCRIPT_PATH -data_dir DATA_DIR -patient_list_path PATIENTS_LIST_PATH
+
+## Reorganize the data folders
+PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/reorganize_data_folders.py"
+REORGANIZE_DATA_DIR = "HOME_DIR/data/raw_data/pelvis"
+
+python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR -reorganize_data_dir REORGANIZE_DATA_DIR -patients_list_path PATIENTS_LIST_PATH
+
