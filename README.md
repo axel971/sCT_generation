@@ -19,10 +19,9 @@ python PYTHON_SCRIPT_PATH -zipped_file_path DATA_DIR/DATA_FILE_NAME -unzipped_fi
 ## Get the patients list
 
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/get_patients_list.py" <br />
-DATA_DIR = "HOME_DIR/data/raw_data/Task1/pelvis" <br />
 PATIENTS_LIST_PATH = "HOME_DIR/data/patients_list.xlsx"
 
-python PYTHON_SCRIPT_PATH -data_dir DATA_DIR -patient_list_path PATIENTS_LIST_PATH
+python PYTHON_SCRIPT_PATH -data_dir DATA_DIR/Task1/pelvis -patient_list_path PATIENTS_LIST_PATH
 
 ## Reorganize the data folders
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/reorganize_data_folders.py" <br />
