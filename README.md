@@ -54,6 +54,6 @@ python PYTHON_SCRIPT_PATH -output_dir PREPROCESSED_DATA_DIR/pelvis -CT_dir DATA_
 PYTHON_SCRIPT_PATH = HOME_DIR/sources/main/main_UNet_2d.py <br />
 PREDICTED_DATA_DIR = HOME_DIR/data/predictions/
 
-python PYTHON_SCRIPT_PATH -patients_list_path PATIENTS_LIST_PATH -mri_dir PREPROCESSED_DATA_DIR/pelvis/M_RI/bias_field_correction -ct_dir PREPROCESSED_DATA_DIR/CT/resampling -sct_dir PREDICTED_DATA_DIR/pelvis/UNet_2d" -img_ext ".nii.gz"
+python PYTHON_SCRIPT_PATH -patients_list_path PATIENTS_LIST_PATH -mri_dir PREPROCESSED_DATA_DIR/pelvis/MRI/bias_field_correction -ct_dir PREPROCESSED_DATA_DIR/CT/resampling -sct_dir PREDICTED_DATA_DIR/pelvis/UNet_2d" -img_ext ".nii.gz"
 
 
