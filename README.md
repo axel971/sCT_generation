@@ -31,7 +31,7 @@ python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR/Task1/pelvis -reorganize_d
 
 # Instructions to preprocess the data
 
-### Compile the cxx executables
+## Compile the cxx executables
 cd HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction <br />
 cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="PATH_TOWARD/itk/bin/CMakeFiles" <br />
 cd build <br />
@@ -41,4 +41,11 @@ cd HOME_DIR/sources/preprocessing/lib/resampling<br />
 cmake . -G "MinGW Makefiles" -D CMAKE_C_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ -Bbuild -DITK_DIR="PATH_TOWARD/itk/bin/CMakeFiles"<br />
 cd build <br />
 mingw32-make
+
+## Run the preprocessing script
+
+PYTHON_SCRIPT_PATH = HOME_DIR/sources/preprocessing/preprocessing.py <br />
+PREPROCESSED_DATA_DIR = HOME_DIR/data/preprocessing/pelvis
+
+python PYTHON_SCRIPT_PATH -output_dir PREPROCESSED_DATA_DIR -CT_dir DATA_DIR/pelvis/CT -MRI_dir DATA_DIR/pelvis/MRI -mask_dir DATA_DIR/pelvis/mask -patients_list_path PATIENTS_LIST_PATH -img_ext ".nii.gz" -resampling_cxx HOME_DIR/sources/preprocessing/lib/resampling/build/bin/resampling.exe -bias_field_correction_cxx HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction/build/bin/n4_bias_field_correction.exe
 
