@@ -21,13 +21,12 @@ python PYTHON_SCRIPT_PATH -zipped_file_path DATA_DIR/DATA_FILE_NAME -unzipped_fi
 PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/get_patients_list.py" <br />
 PATIENTS_LIST_PATH = "HOME_DIR/data/patients_list.xlsx"
 
-python PYTHON_SCRIPT_PATH -data_dir DATA_DIR/Task1/pelvis -patient_list_path PATIENTS_LIST_PATH
+python PYTHON_SCRIPT_PATH -data_dir DATA_DIR/Task1/pelvis -patients_list_path PATIENTS_LIST_PATH
 
 ## Reorganize the data folders
-PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/reorganize_data_folders.py" <br />
-REORGANIZE_DATA_DIR = "HOME_DIR/data/raw_data/pelvis"
+PYTHON_SCRIPT_PATH = "HOME_DIR/sources/data_acquisition/reorganize_data_folders.py" 
 
-python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR/Task1/pelvis -reorganize_data_dir REORGANIZE_DATA_DIR -patients_list_path PATIENTS_LIST_PATH
+python PYTHON_SCRIPT_PATH -original_data_dir DATA_DIR/Task1/pelvis -reorganize_data_dir DATA_DIR/pelvis -patients_list_path PATIENTS_LIST_PATH
 
 # Instructions to preprocess the data
 
@@ -45,9 +44,9 @@ mingw32-make
 ## Run the preprocessing script
 
 PYTHON_SCRIPT_PATH = HOME_DIR/sources/preprocessing/preprocessing.py <br />
-PREPROCESSED_DATA_DIR = HOME_DIR/data/preprocessing/pelvis
+PREPROCESSED_DATA_DIR = HOME_DIR/data/preprocessing/
 
-python PYTHON_SCRIPT_PATH -output_dir PREPROCESSED_DATA_DIR -CT_dir DATA_DIR/pelvis/CT -MRI_dir DATA_DIR/pelvis/MRI -mask_dir DATA_DIR/pelvis/mask -patients_list_path PATIENTS_LIST_PATH -img_ext ".nii.gz" -resampling_cxx HOME_DIR/sources/preprocessing/lib/resampling/build/bin/resampling.exe -bias_field_correction_cxx HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction/build/bin/n4_bias_field_correction.exe
+python PYTHON_SCRIPT_PATH -output_dir PREPROCESSED_DATA_DIR/pelvis -CT_dir DATA_DIR/pelvis/CT -MRI_dir DATA_DIR/pelvis/MRI -mask_dir DATA_DIR/pelvis/mask -patients_list_path PATIENTS_LIST_PATH -img_ext ".nii.gz" -resampling_cxx HOME_DIR/sources/preprocessing/lib/resampling/build/bin/resampling.exe -bias_field_correction_cxx HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction/build/bin/n4_bias_field_correction.exe
 
 # Instructions to train the deep learning models
 ## Run U-Net 2D model
@@ -55,6 +54,6 @@ python PYTHON_SCRIPT_PATH -output_dir PREPROCESSED_DATA_DIR -CT_dir DATA_DIR/pel
 PYTHON_SCRIPT_PATH = HOME_DIR/sources/main/main_UNet_2d.py <br />
 PREDICTED_DATA_DIR = HOME_DIR/data/predictions/
 
-python PYTHON_SCRIPT_PATH -patients_list_path PATIENTS_LIST_PATH -mri_dir PREPROCESSED_DATA_DIR/MRI/bias_field_correction -ct_dir PREPROCESSED_DATA_DIR/CT/resampling -sct_dir PREDICTED_DATA_DIR/UNet_2d" -img_ext ".nii.gz"
+python PYTHON_SCRIPT_PATH -patients_list_path PATIENTS_LIST_PATH -mri_dir PREPROCESSED_DATA_DIR/pelvis/M_RI/bias_field_correction -ct_dir PREPROCESSED_DATA_DIR/CT/resampling -sct_dir PREDICTED_DATA_DIR/pelvis/UNet_2d" -img_ext ".nii.gz"
 
 
