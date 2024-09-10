@@ -50,6 +50,7 @@ PREPROCESSED_DATA_DIR = HOME_DIR/data/preprocessing/pelvis
 python PYTHON_SCRIPT_PATH -output_dir PREPROCESSED_DATA_DIR -CT_dir DATA_DIR/pelvis/CT -MRI_dir DATA_DIR/pelvis/MRI -mask_dir DATA_DIR/pelvis/mask -patients_list_path PATIENTS_LIST_PATH -img_ext ".nii.gz" -resampling_cxx HOME_DIR/sources/preprocessing/lib/resampling/build/bin/resampling.exe -bias_field_correction_cxx HOME_DIR/sources/preprocessing/lib/n4_bias_field_correction/build/bin/n4_bias_field_correction.exe
 
 # Instructions to train the deep learning models
+## Run U-Net 2D model
 
 PYTHON_SCRIPT_PATH = HOME_DIR/sources/main/main_UNet_2d.py <br />
 PREDICTED_DATA_DIR = HOME_DIR/data/predictions/
