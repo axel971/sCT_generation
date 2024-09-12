@@ -1,10 +1,10 @@
 # -patients_list_path = "C:\Users\axell\Documents\dev\sCT_generation\data\patients_list.xlsx" 
 # -mri_dir = C:\Users\axell\Documents\dev\sCT_generation\data\preprocessing\pelvis\MRI\bias_field_correction
 # -ct_dir = C:\Users\axell\Documents\dev\sCT_generation\data\preprocessing\pelvis\CT\resampling
-# -sct_dir = C:\Users\axell\Documents\dev\sCT_generation\data\predictions\UNet_2d
+# -sct_dir = C:\Users\axell\Documents\dev\sCT_generation\data\predictions\pelvis\vanillaGAN_2d
 # -img_ext = ".nii.gz"
 #
-# python main_vanillaGAN_2d.py -patients_list_path "C:\Users\axell\Documents\dev\sCT_generation\data\patients_list.xlsx" -mri_dir C:\Users\axell\Documents\dev\sCT_generation\data\preprocessing\pelvis\MRI\bias_field_correction -ct_dir C:\Users\axell\Documents\dev\sCT_generation\data\preprocessing\pelvis\CT\resampling -sct_dir "C:\Users\axell\Documents\dev\sCT_generation\data\predictions\UNet_2d" -img_ext ".nii.gz"
+# python main_vanillaGAN_2d.py -patients_list_path "C:\Users\axell\Documents\dev\sCT_generation\data\patients_list.xlsx" -mri_dir C:\Users\axell\Documents\dev\sCT_generation\data\preprocessing\pelvis\MRI\bias_field_correction -ct_dir C:\Users\axell\Documents\dev\sCT_generation\data\preprocessing\pelvis\CT\resampling -sct_dir "C:\Users\axell\Documents\dev\sCT_generation\data\predictions\pelvis\vanillaGAN_2d" -img_ext ".nii.gz"
 #
 
 from pathlib import Path
