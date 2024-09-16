@@ -160,7 +160,7 @@ def main(patients_list_path: str,
        
         # Save sCT image
         save_image(iPatient_prediction.squeeze(dim = 1).numpy(),
-                   SCT_DIR / (testing_patient_list[iPatient] + img_ext),
+                   SCT_DIR / (testiing_patients_list[iPatient] + img_ext),
                    origins[iPatient],
                    spacings[iPatient],
                    directions[iPatient])

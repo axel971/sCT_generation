@@ -54,20 +54,24 @@ def train_step(model: torch.nn.Module,
         x, y = x.to(device), y.to(device) # Put batch on device (gpu or cpu)
                
         y_pred = model(x)
-
+        
+        # Compute the loss on current batch
         loss = loss_fn(y_pred, y)
         train_loss += loss.item()
 
+        # Compute metric on current batch
+        metric = metric_fn(y_pred, y)
+
+        # Display loss and metric results for current batch
+        loop.set_postfix(loss = loss.item() , metric = metric.item())
+
+        # Update model weights
         optimizer.zero_grad() # Reset gradiant computation (avoid gradiant accumulation across the loop) 
 
         loss.backward() # Back propagation
 
         optimizer.step() # Gradiant descent
     
-        # Compute eval metric on batch
-        metric = metric_fn(y_pred, y)
-
-        loop.set_postfix(loss = loss.item() , metric = metric.item())
 
     train_loss = train_loss / len(dataloader)
     train_metric = metric_fn.compute()
