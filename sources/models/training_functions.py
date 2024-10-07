@@ -5,7 +5,7 @@ from tqdm.auto import tqdm
 
 
 def train(model: torch.nn.Module,
-          train_dataloader: torch.utils.data.DataLoader,
+          dataloader: torch.utils.data.DataLoader,
           optimizer: torch.optim.Optimizer,
           loss_fn: torch.nn.Module,
           metric_fn: torchmetrics,
@@ -22,7 +22,7 @@ def train(model: torch.nn.Module,
         print(f"Epoch {epoch + 1}/{epochs}:")
 
         train_loss, train_metric = train_step(model,
-                                              train_dataloader,
+                                              dataloader,
                                               loss_fn,
                                               optimizer,
                                               metric_fn,

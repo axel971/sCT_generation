@@ -24,7 +24,7 @@ sys.path.append(str(path_root))
 from utils.nii_file_manipulation import get_nii_data
 from models.UNet_2d import UNet_2d
 from models.training_functions import train
-from models.testing_function import test
+from models.testing_functions import predict
 from utils.simpleITK_utils import get_image, get_data, save_image
 import evaluation.metrics as metrics
 
@@ -66,7 +66,7 @@ def main(patients_list_path: str,
 
     print("Done ...")
 
-    print("*** Extract slices from images ***") # NB: Part to improve in the future (look for memory efficiency and code simplicity)
+    print("*** Extract slices from images ***") # NB: Part to improve (look for memory efficiency and code simplicity)
     start_time = time.time()
 
     training_mri_slices = []
@@ -95,12 +95,14 @@ def main(patients_list_path: str,
     start_time = time.time()
 
     TRAINING_BATCH_SIZE = 16
-    EPOCHS = 3
+    EPOCHS = 2
     training_dataloader = DataLoader(training_dataset,
                                      batch_size = TRAINING_BATCH_SIZE,
                                      shuffle = True)
 
-    model = UNet_2d(1, 1)
+    device = "gpu" if torch.cuda.is_available() else "cpu" # design device agnostic code
+
+    model = UNet_2d(1, 1).to(device)
     
     loss_fn = torch.nn.MSELoss()
     optimizer = torch.optim.Adam(params = model.parameters(), lr = 0.01)
@@ -108,12 +110,12 @@ def main(patients_list_path: str,
     
     
     model_result = train(model = model,
-                         train_dataloader = training_dataloader,
+                         dataloader = training_dataloader,
                          optimizer = optimizer,
                          loss_fn = loss_fn,
                          metric_fn = metric_fn,
                          epochs = EPOCHS,
-                         device = "cpu")
+                         device = device)
     
     
     end_time = time.time()
@@ -136,9 +138,9 @@ def main(patients_list_path: str,
         iPatient_testing_dataloader = DataLoader(iPatient_testing_dataset,
                                          batch_size = TESTING_BATCH_SIZE)
      
-        iPatient_prediction = test(model = model,
-                                   test_dataloader = iPatient_testing_dataloader,
-                                   device = "cpu")
+        iPatient_prediction = predict(model = model,
+                                   dataloader = iPatient_testing_dataloader,
+                                   device = device)
 
         sct = iPatient_prediction.squeeze(dim = 1).numpy()
         

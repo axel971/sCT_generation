@@ -1,4 +1,6 @@
 
+This GitHub repository regroups the implementation of several image-to-image translation methods (U-Net, GAN, etc) for synthetic-CT generation in radiotherapy treatment planning. These methods were described on the following papers: https://www.sciencedirect.com/science/article/abs/pii/S0360301619337356 https://www.sciencedirect.com/science/article/pii/S1120179721002714 
+
 
 # Instructions to Download the Image Dataset
 ## Download the dataset

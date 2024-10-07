@@ -26,7 +26,7 @@ from utils.nii_file_manipulation import get_nii_data
 from models.UNet_2d import UNet_2d
 from models.CNN_2d import CNN_2d
 from models.GAN.vanillaGAN import vanillaGAN
-from models.testing_function import test
+from models.testing_function import predict
 from utils.simpleITK_utils import get_image, get_data, save_image
 import evaluation.metrics as metrics
 from loss.losses import negativeLogLoss 
@@ -103,8 +103,10 @@ def main(patients_list_path: str,
                                      batch_size = TRAINING_BATCH_SIZE,
                                      shuffle = True)
 
-    generator = UNet_2d(1, 1)
-    discriminator = CNN_2d() # To Do: to finish
+    device = "gpu" if torch.cuda.is_available() else "cpu"
+
+    generator = UNet_2d(1, 1).to(device)
+    discriminator = CNN_2d().to(device)
 
     discriminator_loss_fn = torch.nn.BCELoss()
     discriminator_optimizer = torch.optim.Adam(params = discriminator.parameters(), lr = 0.01)
@@ -115,16 +117,16 @@ def main(patients_list_path: str,
     generator_metric_fn = MeanAbsoluteError()
     
     vanillaGAN_2d = vanillaGAN(discriminator = discriminator,
-               generator = generator,
-               train_dataloader = training_dataloader,
-               discriminator_optimizer = discriminator_optimizer,
-               generator_optimizer = generator_optimizer,
-               discriminator_loss_fn = discriminator_loss_fn,
-               generator_loss_fns = generator_loss_fns,
-               discriminator_metric_fn = discriminator_metric_fn,
-               generator_metric_fn = generator_metric_fn,
-               epochs = EPOCHS,
-               device = "cpu")
+                               generator = generator,
+                               training_dataloader = training_dataloader,
+                               discriminator_optimizer = discriminator_optimizer,
+                               generator_optimizer = generator_optimizer,
+                               discriminator_loss_fn = discriminator_loss_fn,
+                               generator_loss_fns = generator_loss_fns,
+                               discriminator_metric_fn = discriminator_metric_fn,
+                               generator_metric_fn = generator_metric_fn,
+                               epochs = EPOCHS,
+                               device = device)
     
     training_results = vanillaGAN_2d.train()
     
@@ -149,9 +151,9 @@ def main(patients_list_path: str,
         iPatient_testing_dataloader = DataLoader(iPatient_testing_dataset,
                                          batch_size = TESTING_BATCH_SIZE)
      
-        iPatient_prediction = test(model = generator,
-                                   test_dataloader = iPatient_testing_dataloader,
-                                   device = "cpu")
+        iPatient_prediction = predict(model = generator,
+                                   dataloader = iPatient_testing_dataloader,
+                                   device = device)
 
         sct = iPatient_prediction.squeeze(dim = 1).numpy()
         
